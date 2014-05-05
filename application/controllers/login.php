@@ -7,6 +7,12 @@ class Login extends CI_Controller {
 	}
 	
 	function ajax_validate() {
-		echo "1";
+		$data = $this->input->post('data');
+		$this->load->model('users');
+		$result = $this->users->validate($data['email'], sha1($data['password']));
+		if($result) {
+			$this->session->set_userdata('logged', true);
+		}
+		echo ($result)?1:0;
 	}
 }

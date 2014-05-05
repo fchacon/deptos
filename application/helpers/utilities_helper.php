@@ -1,13 +1,13 @@
 <?php
-function getJs($file, $plugin = "") {
-	return getCssJs($file, $plugin, "js");
+function get_js($file, $plugin = "") {
+	return get_css_js($file, $plugin, "js");
 }
 
-function getCss($file, $plugin = "") {
-	return getCssJs($file, $plugin, "css");
+function get_css($file, $plugin = "") {
+	return get_css_js($file, $plugin, "css");
 }
 
-function getCssJs($file, $plugin, $ext) {
+function get_css_js($file, $plugin, $ext) {
 	$url = base_url();
 	if($plugin != "")
 		$url .= "plugins/".$plugin."/";
