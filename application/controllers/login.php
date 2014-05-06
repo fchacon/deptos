@@ -15,4 +15,13 @@ class Login extends CI_Controller {
 		}
 		echo ($result)?1:0;
 	}
+	
+	function logout() {
+		$this->session->set_userdata('logged', false);
+		redirect('login');
+	}
+	
+	function forgotten_password() {
+		$this->load->view('forgotten_password');
+	}
 }

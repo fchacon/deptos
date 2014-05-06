@@ -96,7 +96,7 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array('login', 'site', 'validation');
+$autoload['language'] = array('login', 'site', 'validation', 'menu');
 
 
 /*

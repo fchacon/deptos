@@ -1,11 +1,17 @@
+html, body {
+	font-size: 90%;
+}
 .hidden-obj {
 	display: none !important;
 }
 
-.required-field {
+.field-error {
 	border: 1px solid red !important;
 }
 
 .form-error {
 	display:block;
+	font-size:0.8em;
+	color:red;
+	margin-top:2px;
 }
