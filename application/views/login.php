@@ -32,9 +32,19 @@
 							<input type="password" class="form-control jq-password" placeholder="<?php echo lang('login_enter_password');?>" data-validation="required">
 						</div>
 						<div class="form-group">
-							<a href="<?php echo site_url('login/forgotten_password');?>"><?php echo lang('login_forgotten_password');?></a>
+							<a href="#" class="jq-forgotten-password"><?php echo lang('login_forgotten_password');?></a>
 						</div>
 						<button class="btn btn-success jq-submit"><?php echo lang('login');?></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hidden-obj">
+			<div id="jq-forgotten-password-dialog" class="dialog-wrapper" title="<?php echo lang('login_forgotten_password');?>">
+				<div role="form">
+					<div class="form-group">
+						<label for=""><?php echo lang('login_email_address');?></label>
+						<input type="text" class="form-control jq-email" placeholder="<?php echo lang('login_enter_email');?>" data-validation="required|email">
 					</div>
 				</div>
 			</div>

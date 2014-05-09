@@ -12,3 +12,8 @@ function getLang() {
 		}
 	});
 }
+
+function cleanForm(container) {
+	container.find(":text, textarea, select, :password").val("");
+	container.find(":radio, :checkbox").prop("indeterminate", false).prop("checked", false);
+}

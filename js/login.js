@@ -36,4 +36,32 @@ $(function() {
 			}
 		});
 	});
+	
+	//Click a Olvido de contraseña
+	login.off("click", ".jq-forgotten-password").on("click", ".jq-forgotten-password", function() {
+		forgotten_password_dialog.dialog("open");
+	});
+	
+	var forgotten_password_dialog = $("#jq-forgotten-password-dialog");
+	forgotten_password_dialog.dialog({
+		autoOpen: false, modal: true, position: ["center", 20], closeOnEscape: false, resizable: false, width: 500,
+		buttons: [{
+			text: "OK",
+			"class": "btn btn-success",
+			click: function() {
+				
+			}
+		}, {
+			text: "Cancel",
+			"class": "btn",
+			click: function() {
+				
+			}
+		}],
+		close: function() {
+			setTimeout(function() {
+				cleanForm(forgotten_password_dialog);
+			}, 100);
+		}
+	});
 });

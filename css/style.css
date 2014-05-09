@@ -1,5 +1,6 @@
 html, body {
 	font-size: 90%;
+	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important;
 }
 .hidden-obj {
 	display: none !important;
@@ -14,4 +15,39 @@ html, body {
 	font-size:0.8em;
 	color:red;
 	margin-top:2px;
+}
+
+.ui-widget-overlay {
+	background: none !important;
+	background-color: #A8A8A8 !important;
+	opacity: 0.7 !important;
+	filter:alpha(opacity=70) !important;
+}
+
+.ui-dialog.ui-widget-content {
+	background: none !important;
+	background-color: #FFF !important;
+}
+
+.dialog-wrapper {
+	font-size:0.8em;
+}
+
+.ui-dialog {
+	padding: 0 !important;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix {
+	border-radius: 0 !important;
+	border: none !important;
+	border-bottom:1px solid #E5E5E5 !important;
+	background: none !important;
+	background-color:#FFF !important;
+	padding: 1em !important;
+}
+
+.ui-dialog-titlebar-close.ui-state-hover {
+	background: none !important;
+	border: none !important;
 }
