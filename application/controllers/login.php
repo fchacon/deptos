@@ -13,7 +13,7 @@ class Login extends CI_Controller {
 		if($result) {
 			$this->session->set_userdata('logged', true);
 		}
-		echo ($result)?1:0;
+		echo $result?1:0;
 	}
 	
 	function logout() {
@@ -21,7 +21,9 @@ class Login extends CI_Controller {
 		redirect('login');
 	}
 	
-	function forgotten_password() {
-		$this->load->view('forgotten_password');
+	function ajax_forgotten_password() {
+		$email = $this->input->post('email');
+		$this->load->model('users');
+		echo $this->users->forgottenPassword($email, 'json');
 	}
 }

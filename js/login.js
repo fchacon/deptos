@@ -42,25 +42,52 @@ $(function() {
 		forgotten_password_dialog.dialog("open");
 	});
 	
+	//Guardar dialog en memoria
 	var forgotten_password_dialog = $("#jq-forgotten-password-dialog");
+	
+	//Botones del dialog
+	var forgotten_password_dialog_buttons = [{
+		text: "OK",
+		"className": "btn btn-success",
+		click: function() {
+			if(!validateForm(forgotten_password_dialog))
+				return false;
+			
+			var email = $.trim(forgotten_password_dialog.find(".jq-email").val());
+			$.ajax({
+				url: "/login/ajax_forgotten_password",
+				type: "POST",
+				data: {email: email},
+				success: function(resp) {
+					resp = $.parseJSON(resp);
+					forgotten_password_dialog.find(".jq-form").addClass("hidden-obj");
+					forgotten_password_dialog.find(".jq-success-msg").text(resp.data.message);
+					forgotten_password_dialog.find(".jq-success-msg").removeClass("hidden-obj");
+				}
+			});
+			forgotten_password_dialog.dialog("close");
+		}
+	}, {
+		text: "Cancel",
+		"className": "btn btn-default",
+		click: function() {
+			forgotten_password_dialog.dialog("close");
+		}
+	}];
+	
+	//Definicion del dialog
 	forgotten_password_dialog.dialog({
 		autoOpen: false, modal: true, position: ["center", 20], closeOnEscape: false, resizable: false, width: 500,
-		buttons: [{
-			text: "OK",
-			"class": "btn btn-success",
-			click: function() {
-				
-			}
-		}, {
-			text: "Cancel",
-			"class": "btn",
-			click: function() {
-				
-			}
-		}],
+		buttons: forgotten_password_dialog_buttons,
+		open: function() {
+			assignButtons(forgotten_password_dialog, forgotten_password_dialog_buttons);
+		},
 		close: function() {
 			setTimeout(function() {
 				cleanForm(forgotten_password_dialog);
+				assignButtons(forgotten_password_dialog, forgotten_password_dialog_buttons);
+				forgotten_password_dialog.find(".jq-form").removeClass("hidden-obj");
+				forgotten_password_dialog.find(".jq-success-msg").addClass("hidden-obj");
 			}, 100);
 		}
 	});

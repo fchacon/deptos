@@ -7,7 +7,13 @@ html, body {
 }
 
 .field-error {
-	border: 1px solid red !important;
+    border-color: #A94442 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset !important;
+}
+
+.field-error:focus {
+	border-color: #843534 !important;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #CE8483 !important;
 }
 
 .form-error {
@@ -50,4 +56,16 @@ html, body {
 .ui-dialog-titlebar-close.ui-state-hover {
 	background: none !important;
 	border: none !important;
+}
+
+.ui-draggable .ui-dialog-titlebar {
+	cursor: default !important;
+}
+
+.ui-dialog-titlebar-close.ui-corner-all {
+	padding: 0 !important;
+}
+
+.align-center {
+	text-align: center !important;
 }

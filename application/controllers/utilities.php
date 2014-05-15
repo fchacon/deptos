@@ -11,6 +11,6 @@ class Utilities extends CI_Controller {
 			$response[$langs[$i]] = lang($langs[$i]);
 		}
 		
-		echo json_encode($response);
+		echo json_encode(array('data' => $response));
 	}
 }

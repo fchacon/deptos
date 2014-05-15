@@ -41,12 +41,13 @@
 		</div>
 		<div class="hidden-obj">
 			<div id="jq-forgotten-password-dialog" class="dialog-wrapper" title="<?php echo lang('login_forgotten_password');?>">
-				<div role="form">
+				<div role="form" class="jq-form">
 					<div class="form-group">
 						<label for=""><?php echo lang('login_email_address');?></label>
 						<input type="text" class="form-control jq-email" placeholder="<?php echo lang('login_enter_email');?>" data-validation="required|email">
 					</div>
 				</div>
+				<div class="col-md-8 col-md-offset-2 alert alert-success align-center hidden-obj jq-success-msg"></div>
 			</div>
 		</div>
 	</body>
