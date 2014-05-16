@@ -25,8 +25,9 @@ $(function() {
 			url: "/login/ajax_validate",
 			type: "POST",
 			data: {data: data},
-			success: function(resp) {
-				if(resp == "1")
+			success: function(resp_arg) {
+				var resp = $.parseJSON(resp_arg);
+				if(resp.data == "1")
 					window.location = "/home";
 				else {
 					login.find(".jq-error").removeClass("hidden-obj");
@@ -47,12 +48,13 @@ $(function() {
 	
 	//Botones del dialog
 	var forgotten_password_dialog_buttons = [{
-		text: "OK",
+		text: lang.site_accept,
 		"className": "btn btn-success",
 		click: function() {
 			if(!validateForm(forgotten_password_dialog))
 				return false;
 			
+			dialogWait(forgotten_password_dialog);
 			var email = $.trim(forgotten_password_dialog.find(".jq-email").val());
 			$.ajax({
 				url: "/login/ajax_forgotten_password",
@@ -61,14 +63,16 @@ $(function() {
 				success: function(resp) {
 					resp = $.parseJSON(resp);
 					forgotten_password_dialog.find(".jq-form").addClass("hidden-obj");
-					forgotten_password_dialog.find(".jq-success-msg").text(resp.data.message);
-					forgotten_password_dialog.find(".jq-success-msg").removeClass("hidden-obj");
+					forgotten_password_dialog.find(".jq-success-msg").text(resp.data.message).removeClass("hidden-obj");
+					var accept_button = [{text: lang.site_accept, "className": "btn btn-success", click: function() {
+						forgotten_password_dialog.dialog("close");
+					}}];
+					assignButtons(forgotten_password_dialog, accept_button);
 				}
 			});
-			forgotten_password_dialog.dialog("close");
 		}
 	}, {
-		text: "Cancel",
+		text: lang.site_cancel,
 		"className": "btn btn-default",
 		click: function() {
 			forgotten_password_dialog.dialog("close");

@@ -13,7 +13,8 @@ class Login extends CI_Controller {
 		if($result) {
 			$this->session->set_userdata('logged', true);
 		}
-		echo $result?1:0;
+		
+		echo json_encode(array('data' => $result?1:0));
 	}
 	
 	function logout() {

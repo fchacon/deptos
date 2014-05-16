@@ -21,7 +21,7 @@
 			<script type="text/javascript" src="<?php echo get_js("login");?>"></script>
 			<div class="row" id="jq-login">
 				<div class="col-md-4 col-md-offset-4">
-					<div class="hidden-obj jq-error"><?php echo lang('login_error');?></div>
+					<div class="hidden-obj jq-error alert alert-danger"><?php echo lang('login_error');?></div>
 					<div role="form">
 						<div class="form-group">
 							<label for=""><?php echo lang('login_email_address');?></label>
@@ -31,15 +31,23 @@
 							<label for=""><?php echo lang('login_password');?></label>
 							<input type="password" class="form-control jq-password" placeholder="<?php echo lang('login_enter_password');?>" data-validation="required">
 						</div>
+					</div>
+					<div class="form-inline" role="form">
+						<div class="form-group">
+							<button class="btn btn-success jq-submit"><?php echo lang('login');?></button>
+						</div>
 						<div class="form-group">
 							<a href="#" class="jq-forgotten-password"><?php echo lang('login_forgotten_password');?></a>
 						</div>
-						<button class="btn btn-success jq-submit"><?php echo lang('login');?></button>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<?php //DIALOGS ?>
 		<div class="hidden-obj">
+		
+			<?php //DIALOG DE RECORDAR CONTRASEÑA ?>
 			<div id="jq-forgotten-password-dialog" class="dialog-wrapper" title="<?php echo lang('login_forgotten_password');?>">
 				<div role="form" class="jq-form">
 					<div class="form-group">

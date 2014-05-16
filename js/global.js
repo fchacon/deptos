@@ -24,15 +24,30 @@ function checkVar(x) {
 function cleanForm(container) {
 	container.find(":text, textarea, select, :password").val("");
 	container.find(":radio, :checkbox").prop("indeterminate", false).prop("checked", false);
+	container.find(".jq-form-error").remove();
+	container.find(".field-error").removeClass("field-error");
 }
 
 function assignButtons(dialog, buttons) {
 	dialog.next(".ui-dialog-buttonpane").find(".ui-dialog-buttonset").html("");
 	$.each(buttons, function(index, button) {
 		var buttonItem = $("<button></button>");
-		buttonItem.addClass(button.className).text(button.text).click(button.click);
+		if(checkVar(button.disabled) && button.disabled == true)
+			buttonItem.prop("disabled", true);
+		buttonItem.addClass(button.className).text(button.text);
+		if(checkVar(button.click))
+			buttonItem.click(button.click);
 		buttonItem.appendTo(dialog.next(".ui-dialog-buttonpane").find(".ui-dialog-buttonset"));
 	});
+}
+
+function dialogWait(dialog) {
+	var button_wait = [{
+		text: lang.site_wait_a_moment,
+		"className": "btn btn-success",
+		disabled: true
+	}];
+	assignButtons(dialog, button_wait);
 }
 
 function globalAjax() {
@@ -43,8 +58,8 @@ function globalAjax() {
 			return false;
 		}
 		
-		var resp = xhr.responseText;
-		if(checkVar(resp)) {
+		if(checkVar(xhr.responseText)) {
+			var resp = xhr.responseText;
 			try {
 				resp = $.parseJSON(resp);
 				if(checkVar(resp.data)) {
