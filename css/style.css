@@ -1,6 +1,9 @@
 html, body {
-	font-size: 90%;
+	font-size: 80%;
 	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+body {
+	padding-top: 45px;
 }
 .hidden-obj {
 	display: none !important;
@@ -68,4 +71,14 @@ html, body {
 
 .align-center {
 	text-align: center !important;
+}
+
+.align-right {
+	text-align: right !important;
+}
+
+.red-asterisk {
+	color: red;
+	font-size: 1.2em;
+	margin-left: 2px;
 }

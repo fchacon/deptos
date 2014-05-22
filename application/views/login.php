@@ -20,7 +20,7 @@
 		<div class="container-fluid">
 			<script type="text/javascript" src="<?php echo get_js("login");?>"></script>
 			<div class="row" id="jq-login">
-				<div class="col-md-4 col-md-offset-4">
+				<div class="col-md-4 col-md-offset-4 well bs-component">
 					<div class="hidden-obj jq-error alert alert-danger"><?php echo lang('login_error');?></div>
 					<div role="form">
 						<div class="form-group">
@@ -34,7 +34,7 @@
 					</div>
 					<div class="form-inline" role="form">
 						<div class="form-group">
-							<button class="btn btn-success jq-submit"><?php echo lang('login');?></button>
+							<button class="btn btn-sm btn-success jq-submit"><?php echo lang('login');?></button>
 						</div>
 						<div class="form-group">
 							<a href="#" class="jq-forgotten-password"><?php echo lang('login_forgotten_password');?></a>

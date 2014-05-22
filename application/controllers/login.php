@@ -8,8 +8,8 @@ class Login extends CI_Controller {
 	
 	function ajax_validate() {
 		$data = $this->input->post('data');
-		$this->load->model('users');
-		$result = $this->users->validate($data['email'], sha1($data['password']));
+		$this->load->model('users_mdl');
+		$result = $this->users_mdl->validate($data['email'], sha1($data['password']));
 		if($result) {
 			$this->session->set_userdata('logged', true);
 		}
@@ -24,7 +24,7 @@ class Login extends CI_Controller {
 	
 	function ajax_forgotten_password() {
 		$email = $this->input->post('email');
-		$this->load->model('users');
-		echo $this->users->forgottenPassword($email, 'json');
+		$this->load->model('users_mdl');
+		echo $this->users_mdl->forgottenPassword($email, 'json');
 	}
 }

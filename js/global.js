@@ -1,3 +1,5 @@
+//Funcion para cargar traducciones y poder utilizarlas en
+//ambientes js. Ej: lang.site_accept ==> "Aceptar"
 var lang = {};
 function getLang() {
 	if(!$.isEmptyObject(lang))
@@ -14,6 +16,10 @@ function getLang() {
 	});
 }
 
+//Cargar traducciones
+getLang();
+
+//Funcion para validar una variable
 function checkVar(x) {
 	if(x == null || x == undefined || (typeof x != "object" && $.trim(x) === "") || $.trim(x) === "null" || x === false)
 		return false;
@@ -21,6 +27,7 @@ function checkVar(x) {
 	return true;
 }
 
+//Limpia formularios
 function cleanForm(container) {
 	container.find(":text, textarea, select, :password").val("");
 	container.find(":radio, :checkbox").prop("indeterminate", false).prop("checked", false);
@@ -28,6 +35,7 @@ function cleanForm(container) {
 	container.find(".field-error").removeClass("field-error");
 }
 
+//Asigna botones a un dialog
 function assignButtons(dialog, buttons) {
 	dialog.next(".ui-dialog-buttonpane").find(".ui-dialog-buttonset").html("");
 	$.each(buttons, function(index, button) {
@@ -41,6 +49,7 @@ function assignButtons(dialog, buttons) {
 	});
 }
 
+//Reemplaza botones de un dialog por un boton que dice: "Espere un momento"
 function dialogWait(dialog) {
 	var button_wait = [{
 		text: lang.site_wait_a_moment,
@@ -50,6 +59,21 @@ function dialogWait(dialog) {
 	assignButtons(dialog, button_wait);
 }
 
+//Reemplaza un boton por uno que dice: "Espere un momento"
+function buttonWait(button) {
+	button.addClass("hidden-obj");
+	var wait_button = $("<button></button>");
+	wait_button.addClass("btn btn-success jq-wait-button").prop("disabled", true).text(lang.site_wait_a_moment);
+	wait_button.insertAfter(button);
+}
+
+//Elimina el boton de "Espere un momento"
+function recoverButton(button) {
+	button.next(".jq-wait-button").remove();
+	button.removeClass("hidden-obj");
+}
+
+//Parametros ajax globales
 function globalAjax() {
 	$(document).ajaxSuccess(function(event, xhr, settings) {
 		if(xhr.status != 200) {
@@ -84,4 +108,98 @@ function globalAjax() {
 	});
 }
 
+//Inicializa ajax global
 globalAjax();
+
+//Retorna un string random. Sirve para poder generar passwords o id's.
+function rdmStr(length) {
+	var str = "";
+	var randomNumber;
+	
+	for(var i = 0; i < length; i++) {
+		randomNumber = (Math.floor((Math.random() * 100)) % 94) + 33;
+		if((randomNumber >=33) && (randomNumber <=47))
+			continue;
+		if((randomNumber >=58) && (randomNumber <=64))
+			continue;
+		if((randomNumber >=91) && (randomNumber <=96))
+			continue;
+		if((randomNumber >=123) && (randomNumber <=126))
+			continue;
+		
+		str += String.fromCharCode(randomNumber);
+	}
+	
+	return str;
+}
+
+//Entrega un id unico para un elemento html
+function uuid() {
+	var str = "id_"+rdmStr(6);
+	while($("#"+str).length > 0)
+		str = "id_"+rdmStr(6);
+	
+	return str;
+}
+
+//Setea el atributo for de los labels que esten dentro de container
+function setLabels(container) {
+	container.find("label").each(function() {
+		var field = $(this).next(":text, :radio, :checkbox, textarea, select").first();
+		var id = uuid();
+		field.attr("id", id);
+		$(this).attr("for", id);
+	});
+}
+
+//Sirve para agregar una notificacion
+function notify(message, type) {
+	var title = "";
+	if(type == "success")
+		title = lang.site_success;
+	else if(type == "info")
+		title = lang.site_info;
+	else if(type == "error")
+		title = lang.site_error;
+	
+	new PNotify({title: title, text: message, type: type});
+}
+
+//Agrega un asterisco a los campos obligatorios
+function addRequiredField(container) {
+	container.find(":text, select, textarea").each(function() {
+		if($(this).data("validation") == undefined || $.trim($(this).data("validation").toString()) == "")
+			return true;
+		
+		var validations = $(this).data("validation").toString().split("|");
+		var element = $(this);
+		$.each(validations, function(index, validation) {
+			if(validation == "required") {
+				var label = element.prev("label");
+				var html_required = $("<span></span>");
+				html_required.addClass("red-asterisk").text("*").data({toggle: "tooltip", placement: "top", title: "Campo obligatorio"});
+				html_required.appendTo(label);
+				html_required.tooltip();
+				return false;
+			}
+		});
+	});
+}
+
+//Esconde los labels arriba de los campo de texto y construye atributos placeholder
+function hideLabels(container) {
+	if($.support.placeholder) {
+		container.find(":text").each(function() {
+			var label = $(this).prev("label");
+			var placeholder = label.text();
+			$(this).attr("placeholder", placeholder);
+			label.remove();
+		});
+	}
+}
+
+//Sirve para determinar si el navegador soporta el atributo placeholder
+jQuery.support.placeholder = (function(){
+    var i = document.createElement('input');
+    return 'placeholder' in i;
+})();

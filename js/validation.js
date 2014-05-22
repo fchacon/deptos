@@ -25,6 +25,10 @@ function validateEmail(field) {
 	return valid_email;
 }
 
+function validateRut() {
+	return true;
+}
+
 function validateForm(container) {
 	container.find(".jq-form-error").remove();
 	container.find(".field-error").removeClass("field-error");

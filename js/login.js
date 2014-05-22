@@ -1,13 +1,12 @@
 $(function() {
-	getLang();
 	var login = $("#jq-login");
 	
-	//Click a Ingresar
-	login.off("click", ".jq-submit").on("click", ".jq-submit", function() {
-		if($(this).hasClass("disabled"))
+	//Handler boton Ingresar
+	function submitLogin() {
+		var button = login.find(".jq-submit");
+		if(button.hasClass("disabled"))
 			return false;
 		
-		var button = $(this);
 		button.addClass("disabled").text(lang.site_wait_a_moment);
 		
 		//Validar formulario
@@ -36,6 +35,16 @@ $(function() {
 				}
 			}
 		});
+	}
+	
+	//Click a Ingresar
+	login.off("click", ".jq-submit").on("click", ".jq-submit", submitLogin);
+	
+	//Tecla enter cuando se está en password
+	login.off("keyup", ".jq-password").on("keyup", ".jq-password", function(e) {
+		var keycode = (e.keyCode ? e.keyCode : e.which);
+		if(keycode == '13')
+			submitLogin();
 	});
 	
 	//Click a Olvido de contraseña
