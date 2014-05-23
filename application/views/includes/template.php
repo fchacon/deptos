@@ -22,7 +22,18 @@
 		<?php $this->load->view('includes/breadcrumb');?>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-6 col-md-offset-3">
+				<div class="col-md-2">
+					<div class="list-group">
+						<a href="<?php echo site_url();?>" class="list-group-item active">
+							<span class="glyphicon glyphicon-bullhorn"></span> Novedades
+						</a>
+						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-globe"></span> Comunidad</a>
+						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-pencil"></span> Votaciones</a>
+						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span> Actas</a>
+						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-usd"></span> Gastos comunes</a>
+					</div>
+				</div>
+				<div class="col-md-6">
 					<?php $this->load->view($VIEW);?>
 				</div>
 			</div>

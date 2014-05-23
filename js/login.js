@@ -58,7 +58,7 @@ $(function() {
 	//Botones del dialog
 	var forgotten_password_dialog_buttons = [{
 		text: lang.site_accept,
-		"className": "btn btn-success",
+		"className": "btn btn-success btn-sm",
 		click: function() {
 			if(!validateForm(forgotten_password_dialog))
 				return false;
@@ -82,7 +82,7 @@ $(function() {
 		}
 	}, {
 		text: lang.site_cancel,
-		"className": "btn btn-default",
+		"className": "btn btn-default btn-sm",
 		click: function() {
 			forgotten_password_dialog.dialog("close");
 		}
