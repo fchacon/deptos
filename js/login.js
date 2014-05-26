@@ -73,7 +73,7 @@ $(function() {
 					resp = $.parseJSON(resp);
 					forgotten_password_dialog.find(".jq-form").addClass("hidden-obj");
 					forgotten_password_dialog.find(".jq-success-msg").text(resp.data.message).removeClass("hidden-obj");
-					var accept_button = [{text: lang.site_accept, "className": "btn btn-success", click: function() {
+					var accept_button = [{text: lang.site_accept, "className": "btn btn-sm btn-success", click: function() {
 						forgotten_password_dialog.dialog("close");
 					}}];
 					assignButtons(forgotten_password_dialog, accept_button);

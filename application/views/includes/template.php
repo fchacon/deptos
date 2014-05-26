@@ -13,9 +13,11 @@
 		<script type="text/javascript" src="<?php echo get_js("jquery-1.7.1.min");?>"></script>
 		<script type="text/javascript" src="<?php echo get_js("bootstrap.min", "bootstrap");?>"></script>
 		<script type="text/javascript" src="<?php echo get_js("jquery-ui-1.8.24.min", "jqueryui");?>"></script>
+		<script type="text/javascript" src="<?php echo get_js("pnotify.custom.min", "pnotify");?>"></script>
+		<script type="text/javascript" src="<?php echo get_js("jquery.sticky", "sticky");?>"></script>
 		<script type="text/javascript" src="<?php echo get_js("global");?>"></script>
 		<script type="text/javascript" src="<?php echo get_js("validation");?>"></script>
-		<script type="text/javascript" src="<?php echo get_js("pnotify.custom.min", "pnotify");?>"></script>
+		<script type="text/javascript" src="<?php echo get_js("customizations");?>"></script>
 	</head>
 	<body>
 		<?php $this->load->view('includes/menu');?>
@@ -23,17 +25,9 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-2">
-					<div class="list-group">
-						<a href="<?php echo site_url();?>" class="list-group-item active">
-							<span class="glyphicon glyphicon-bullhorn"></span> Novedades
-						</a>
-						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-globe"></span> Comunidad</a>
-						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-pencil"></span> Votaciones</a>
-						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span> Actas</a>
-						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-usd"></span> Gastos comunes</a>
-					</div>
+					<?php $this->load->view('includes/menu_left');?>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-10 right-container">
 					<?php $this->load->view($VIEW);?>
 				</div>
 			</div>

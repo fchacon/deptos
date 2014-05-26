@@ -5,6 +5,34 @@ html, body {
 body {
 	padding-top: 45px;
 }
+.breadcrumb {
+	position: fixed !important;
+	width:100%;
+	z-index:100;
+}
+@media (min-width: 979px) {
+	.menu-left.affix-top {
+		position: static;
+		margin-top:45px;
+		width:228px;
+	}
+
+	.menu-left.affix {
+		position: fixed !important;
+		top:90px;
+		width:228px;
+	}
+}
+
+.affix,.affix-top {
+	position:static !important;
+}
+.affix-top {
+	margin-top:40px;
+}
+.right-container {
+	margin-top:40px;
+}
 .hidden-obj {
 	display: none !important;
 }
@@ -81,4 +109,12 @@ body {
 	color: red;
 	font-size: 1.2em;
 	margin-left: 2px;
+}
+
+.new {
+	border-bottom: 1px solid #E6E6E6;
+}
+.new p {
+	font-size: 12px;
+	color: #A8A8A8;
 }
