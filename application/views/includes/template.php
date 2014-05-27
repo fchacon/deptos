@@ -14,7 +14,6 @@
 		<script type="text/javascript" src="<?php echo get_js("bootstrap.min", "bootstrap");?>"></script>
 		<script type="text/javascript" src="<?php echo get_js("jquery-ui-1.8.24.min", "jqueryui");?>"></script>
 		<script type="text/javascript" src="<?php echo get_js("pnotify.custom.min", "pnotify");?>"></script>
-		<script type="text/javascript" src="<?php echo get_js("jquery.sticky", "sticky");?>"></script>
 		<script type="text/javascript" src="<?php echo get_js("global");?>"></script>
 		<script type="text/javascript" src="<?php echo get_js("validation");?>"></script>
 		<script type="text/javascript" src="<?php echo get_js("customizations");?>"></script>

@@ -14,13 +14,14 @@ body {
 	.menu-left.affix-top {
 		position: static;
 		margin-top:45px;
-		width:228px;
+		width:100%;
 	}
 
 	.menu-left.affix {
 		position: fixed !important;
 		top:90px;
-		width:228px;
+		width: 16.6667%;
+		padding-right: 30px;
 	}
 }
 
