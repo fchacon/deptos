@@ -55,7 +55,7 @@
 						<input type="text" class="form-control jq-email" placeholder="<?php echo lang('login_enter_email');?>" data-validation="required|email">
 					</div>
 				</div>
-				<div class="col-md-8 col-md-offset-2 alert alert-success align-center hidden-obj jq-success-msg"></div>
+				<div class="col-md-8 col-md-offset-2 alert alert-success text-center hidden-obj jq-success-msg"></div>
 			</div>
 		</div>
 	</body>
