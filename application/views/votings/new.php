@@ -8,8 +8,7 @@
 		<textarea class="form-control jq-description"></textarea>
 	</div>
 	
-	<br/>
-	<h4><?php echo lang('voting_options');?> <small><?php echo lang('voting_options_obs');?></small></h4>
+	<h5><?php echo lang('voting_options');?> <small><?php echo lang('voting_options_obs');?></small></h5>
 	<div class="checkbox-wrapper">
 		<input type="checkbox" class="jq-multiple">
 		<label><?php echo lang('voting_allow_multiple_responses');?></label>

@@ -29,4 +29,6 @@ if(isset($VOTINGS) && !empty($VOTINGS)) {
 	<div id="jq-create-voting-dialog" class="dialog-wrapper" title="Crear votación">
 		<div class="jq-content"></div>
 	</div>
+	
+	<div id="jq-answer-voting-dialog" class="dialog-wrapper" title=""></div>
 </div>
