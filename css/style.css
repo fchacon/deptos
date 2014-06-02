@@ -69,11 +69,18 @@ body {
 
 .dialog-wrapper {
 	font-size:0.8em;
+	max-height:450px !important;
+	overflow: auto;
 }
 
 .ui-dialog {
 	padding: 0 !important;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5) !important;
+	z-index: 1032 !important;
+}
+
+.ui-widget-overlay {
+	z-index: 1031 !important;
 }
 
 .ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix {
@@ -124,4 +131,17 @@ h1,h2,h3 {
 .section-header {
 	padding-bottom:2px;
 	border-bottom: 1px solid #eee;
+}
+
+.ui-dialog .input-group input {
+	z-index: 1040 !important;
+}
+
+.checkbox-wrapper {
+	padding:2px;
+}
+
+.checkbox-wrapper label {
+	position: relative;
+	top:-2px;
 }

@@ -15,3 +15,7 @@ function get_css_js($file, $plugin, $ext) {
 	$url .= $ext."/".$file.".".$ext;
 	return $url;
 }
+
+function get_image($img) {
+	return base_url()."images/".$img;
+}

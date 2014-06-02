@@ -145,7 +145,15 @@ function uuid() {
 //Setea el atributo for de los labels que esten dentro de container
 function setLabels(container) {
 	container.find("label").each(function() {
-		var field = $(this).next(":text, :radio, :checkbox, textarea, select").first();
+		var field;
+		if($(this).prev().is(":checkbox") || $(this).prev().is(":radio"))
+			field = $(this).prev();
+		else {
+			field = $(this).next(":text, textarea, select").first();
+			if(field.length == 0)
+				field = $(this).next().find(":text, textarea, select").first();
+		}
+		
 		var id = uuid();
 		field.attr("id", id);
 		$(this).attr("for", id);

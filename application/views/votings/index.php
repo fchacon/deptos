@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo get_js('votings/new');?>"></script>
 <div class="section-header">
 	<table class="full-width">
 		<tr>
@@ -25,7 +26,7 @@ if(isset($VOTINGS) && !empty($VOTINGS)) {
 ?>
 
 <div class="hidden-obj">
-	<div id="jq-create-voting-dialog" class="dialog_wrapper" title="Crear votación">
-		
+	<div id="jq-create-voting-dialog" class="dialog-wrapper" title="Crear votación">
+		<div class="jq-content"></div>
 	</div>
 </div>

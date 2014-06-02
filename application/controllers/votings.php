@@ -13,4 +13,13 @@ class Votings extends CI_Controller {
 		$data['VOTINGS'] = $this->votings_mdl->getByBuilding();
 		$this->load->view('includes/template', $data);
 	}
+	
+	public function ajax_load_new() {
+		$this->load->view("votings/new");
+	}
+	
+	public function ajax_create() {
+		$data = $this->input->post("data");
+		echo $this->votings_mdl->create($data, "json");
+	}
 }

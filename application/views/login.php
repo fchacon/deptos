@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Administración comunidad</title>
 		
+		<link rel="shortcut icon" href="<?php echo get_image("favicon.ico");?>" />
 		<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_css("style");?>" />
 		<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_css("bootstrap.min", "bootstrap");?>" />
 		<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_css("jquery-ui", "jqueryui");?>" />
