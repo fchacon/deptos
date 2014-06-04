@@ -1,19 +1,22 @@
 $(function() {
 	var create_voting_dialog = $("#jq-create-voting-dialog");
 	
+	//Botones para crear nueva votacion
 	buttons_for_new_voting = [{
 		text: lang.site_create,
 		"className": "btn btn-sm btn-success",
 		click: function() {
 			dialogWait(create_voting_dialog);
+			var data = getVoting(create_voting_dialog);
 			$.ajax({
 				url: "/votings/ajax_create",
 				type: "POST",
-				data: {data: getVoting(create_voting_dialog)},
+				data: {data: data},
 				success: function(resp_arg) {
+					console.log(data);
 					notify(lang.voting_created_successfully, "success");
 					setTimeout(function() {
-						window.location.reload();
+						//window.location.reload();
 					}, 2500);
 				}
 			});
@@ -95,9 +98,21 @@ $(function() {
 		});
 	}
 	
+	//Obtener json de una votacion
 	function getVoting(container) {
 		var data = {};
 		data.title = $.trim(container.find(".jq-title").val());
+		data.description = $.trim(container.find(".jq-description").val());
+		data.multiple = (container.find(".jq-multiple").is(":checked"))?1:0;
+		data.options = [];
+		container.find(".jq-option").each(function() {
+			if($.trim($(this).val()) == "")
+				return true;
+			
+			var option = $.trim($(this).val());
+			data.options.push(option);
+		});
+		
 		return data;
 	}
 });
