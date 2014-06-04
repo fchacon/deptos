@@ -111,10 +111,10 @@ body {
 	margin-left: 2px;
 }
 
-.new {
+.new, .voting {
 	border-bottom: 1px solid #E6E6E6;
 }
-.new p {
+.new p, .voting p {
 	font-size: 12px;
 	color: #A8A8A8;
 }
@@ -144,4 +144,17 @@ h1,h2,h3 {
 .checkbox-wrapper label {
 	position: relative;
 	top:-2px;
+}
+
+.voting:hover {
+	cursor: pointer;
+	background-color: #F2F2F2;
+}
+
+.valign-middle {
+	vertical-align: middle !important;
+}
+
+table.table td {
+	padding: 2px 4px !important;
 }
