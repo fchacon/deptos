@@ -5,7 +5,12 @@ $(function() {
 	vote_dialog.dialog({
 		autoOpen: false, modal: true, closeOnEscape: false, resizable: false, position: ["center", 20], width: 500,
 		open: function() {
-			
+			if($.trim(vote_dialog.find(".jq-content").html()) == "") {
+				printLoading(vote_dialog.find(".jq-content"), "40");
+				vote_dialog.find(".jq-content").load("/votings/ajax_load_answer", function() {
+					removeLoading(vote_dialog.find(".jq-content"));
+				});
+			}
 		},
 		close: function() {
 			

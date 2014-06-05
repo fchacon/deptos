@@ -13,4 +13,12 @@ class Utilities extends CI_Controller {
 		
 		echo json_encode(array('data' => $response));
 	}
+	
+	public function ajax_get_url() {
+		$urls['base'] = base_url();
+		$urls['loading16'] = get_image("loading16.gif");
+		$urls['loading40'] = get_image("loading40.gif");
+		
+		echo json_encode(array('data' => $urls));
+	}
 }

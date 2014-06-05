@@ -9,8 +9,8 @@ function getLang() {
 		url: "/utilities/ajax_get_lang",
 		type: "GET",
 		async: false,
-		success: function(resp) {
-			resp = $.parseJSON(resp);
+		success: function(resp_arg) {
+			var resp = $.parseJSON(resp_arg);
 			lang = resp.data;
 		}
 	});
@@ -18,6 +18,26 @@ function getLang() {
 
 //Cargar traducciones
 getLang();
+
+//Funcion para cargar algunas urls
+var globalUrl = {};
+function getGlobalUrl() {
+	if(!$.isEmptyObject(globalUrl))
+		return;
+	
+	$.ajax({
+		url: "/utilities/ajax_get_url",
+		type: "GET",
+		async: false,
+		success: function(resp_arg) {
+			var resp = $.parseJSON(resp_arg);
+			globalUrl = resp.data;
+		}
+	});
+}
+
+//Cargar urls
+getGlobalUrl();
 
 //Funcion para validar una variable
 function checkVar(x) {
@@ -211,3 +231,17 @@ jQuery.support.placeholder = (function(){
     var i = document.createElement('input');
     return 'placeholder' in i;
 })();
+
+function printLoading(element, height) {
+	element.addClass("hidden-obj");
+	var attributes = {src: globalUrl["loading"+height], title: lang.loading};
+	var div_loading = $("<div></div>").addClass("text-center jq-loading");
+	var loading = $("<img />").attr(attributes);
+	loading.appendTo(div_loading);
+	div_loading.insertAfter(element);
+}
+
+function removeLoading(element) {
+	element.next(".jq-loading").remove();
+	element.removeClass("hidden-obj");
+}
