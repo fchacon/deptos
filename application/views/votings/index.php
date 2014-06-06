@@ -36,7 +36,7 @@
 	</div>
 	
 	<?php //Dialog de responder votacion ?>
-	<div id="jq-vote-dialog" class="dialog-wrapper" title="<?php echo lang();?>">
+	<div id="jq-vote-dialog" class="dialog-wrapper" title="<?php //echo lang();?>">
 		<div class="jq-content"></div>
 	</div>
 </div>
