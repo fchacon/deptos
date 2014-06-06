@@ -114,10 +114,6 @@ function globalAjax() {
 						//Error
 						alert("Error");
 					}
-					else {
-						//Otro error
-						alert("Error");
-					}
 				}
 			}
 			catch(err) {
@@ -234,7 +230,7 @@ jQuery.support.placeholder = (function(){
 
 function printLoading(element, height) {
 	element.addClass("hidden-obj");
-	var attributes = {src: globalUrl["loading"+height], title: lang.loading};
+	var attributes = {src: globalUrl["loading_"+height], title: lang.loading};
 	var div_loading = $("<div></div>").addClass("text-center jq-loading");
 	var loading = $("<img />").attr(attributes);
 	loading.appendTo(div_loading);

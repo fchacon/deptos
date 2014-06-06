@@ -9,3 +9,4 @@ $lang['site_data_saved_successfully'] = "Los datos se han guardado exitosamente"
 $lang['site_save'] = "Guardar";
 $lang['site_create'] = "Crear";
 $lang['site_description'] = "Descripción";
+$lang['site_send'] = "Enviar";

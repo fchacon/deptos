@@ -22,4 +22,11 @@ class Votings extends CI_Controller {
 		$data = $this->input->post("data");
 		echo $this->votings_mdl->create($data, "json");
 	}
+	
+	public function ajax_load_answer() {
+		$id = $this->input->post("id");
+		$voting = $this->votings_mdl->getById($id);
+		$data['VOTING'] = $voting['data'];
+		$this->load->view("votings/answer", $data);
+	}
 }

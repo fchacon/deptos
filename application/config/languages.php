@@ -11,5 +11,6 @@ $config['LANGUAGES_ITEMS'] = array(
 	"site_info",
 	"site_data_saved_successfully",
 	"site_create",
-	"voting_created_successfully"
+	"voting_created_successfully",
+	"site_send"
 );

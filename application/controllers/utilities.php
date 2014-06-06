@@ -16,8 +16,8 @@ class Utilities extends CI_Controller {
 	
 	public function ajax_get_url() {
 		$urls['base'] = base_url();
-		$urls['loading16'] = get_image("loading16.gif");
-		$urls['loading40'] = get_image("loading40.gif");
+		$urls['loading_small'] = get_image("loading_small.gif");
+		$urls['loading_large'] = get_image("loading_large.gif");
 		
 		echo json_encode(array('data' => $urls));
 	}

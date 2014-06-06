@@ -71,6 +71,7 @@ body {
 	font-size:0.8em;
 	max-height:450px !important;
 	overflow: auto;
+	z-index: 1100;
 }
 
 .ui-dialog {
@@ -111,7 +112,7 @@ body {
 	margin-left: 2px;
 }
 
-.new, .voting {
+.new {
 	border-bottom: 1px solid #E6E6E6;
 }
 .new p, .voting p {
@@ -131,6 +132,7 @@ h1,h2,h3 {
 .section-header {
 	padding-bottom:2px;
 	border-bottom: 1px solid #eee;
+	margin-bottom: 10px;
 }
 
 .ui-dialog .input-group input {
@@ -148,7 +150,7 @@ h1,h2,h3 {
 
 .voting:hover {
 	cursor: pointer;
-	background-color: #F2F2F2;
+	background-color: #FAFAFA;
 }
 
 .valign-middle {
@@ -157,4 +159,6 @@ h1,h2,h3 {
 
 table.table td {
 	padding: 2px 4px !important;
+	border-top:none !important;
+	border-bottom: 1px solid #E6E6E6 !important;
 }

@@ -16,12 +16,12 @@
 <?php if(isset($VOTINGS) && !empty($VOTINGS)) { ?>
 <table class="table full-width">
 	<?php foreach($VOTINGS as $voting) { ?>
-	<tr class="voting">
+	<tr class="voting" data-id="<?php echo $voting['id'];?>">
 		<td colspan="1" width="80%" class="">
 			<h4 class=""><?php echo $voting['title'];?></h4>
 			<p class=""><?php echo $voting['description'];?></p>
 		</td>
-		<td colspan="1" width="20%" class="text-center valign-middle">
+		<td colspan="1" width="20%" class="text-right valign-middle">
 			<button class="btn btn-sm btn-default jq-vote">Responder</button>
 		</td>
 	</tr>
@@ -36,7 +36,7 @@
 	</div>
 	
 	<?php //Dialog de responder votacion ?>
-	<div id="jq-vote-dialog" class="dialog-wrapper" title="">
+	<div id="jq-vote-dialog" class="dialog-wrapper" title="<?php echo lang();?>">
 		<div class="jq-content"></div>
 	</div>
 </div>
