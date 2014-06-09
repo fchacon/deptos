@@ -5,3 +5,7 @@ $lang['voting_options_obs'] = "(2 opciones son obligatorias)";
 $lang['voting_option'] = "Opción";
 $lang['voting_allow_multiple_responses'] = "Se puede escoger más de una respuesta";
 $lang['voting_created_successfully'] = "Votación creada exitosamente";
+$lang['voting_answer'] = "Responder votación";
+$lang['voting_answer_it'] = "Responder";
+$lang['voting_votings'] = "Votaciones";
+$lang['voting_create'] = "Crear votacion";

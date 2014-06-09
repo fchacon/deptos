@@ -72,6 +72,7 @@ $(function() {
 	create_voting_dialog.off("click", ".jq-new-option").on("click", ".jq-new-option", function() {
 		var option_group = $(this).parentsUntil(".jq-option-group").parent(".jq-option-group");
 		var clone = option_group.clone();
+		setLabels(clone);
 		clone.find(".jq-option").val("");
 		clone.insertAfter(option_group);
 		enumerateOptions();

@@ -3,11 +3,11 @@
 <div class="section-header">
 	<table class="full-width">
 		<tr>
-			<td><h3>Votaciones</h3></td>
+			<td><h3><?php echo lang('voting_votings');?></h3></td>
 			<td class="text-right">
 			<button class="btn btn-success btn-sm" id="jq-create-voting">
 				<span class="glyphicon glyphicon-plus"></span>
-				Crear votacion
+				<?php echo lang('voting_create');?>
 			</button>
 			</td>
 		</tr>
@@ -17,12 +17,12 @@
 <table class="table full-width">
 	<?php foreach($VOTINGS as $voting) { ?>
 	<tr class="voting" data-id="<?php echo $voting['id'];?>">
-		<td colspan="1" width="80%" class="">
+		<td colspan="1" width="80%">
 			<h4 class=""><?php echo $voting['title'];?></h4>
 			<p class=""><?php echo $voting['description'];?></p>
 		</td>
 		<td colspan="1" width="20%" class="text-right valign-middle">
-			<button class="btn btn-sm btn-default jq-vote">Responder</button>
+			<button class="btn btn-sm btn-default jq-vote"><?php echo lang('voting_answer_it');?></button>
 		</td>
 	</tr>
 	<?php } ?>
@@ -36,7 +36,7 @@
 	</div>
 	
 	<?php //Dialog de responder votacion ?>
-	<div id="jq-vote-dialog" class="dialog-wrapper" title="<?php //echo lang();?>">
+	<div id="jq-vote-dialog" class="dialog-wrapper" title="<?php echo lang('voting_answer');?>">
 		<div class="jq-content"></div>
 	</div>
 </div>

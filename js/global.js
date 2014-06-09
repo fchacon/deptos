@@ -96,6 +96,11 @@ function recoverButton(button) {
 //Parametros ajax globales
 function globalAjax() {
 	$(document).ajaxSuccess(function(event, xhr, settings) {
+		if(checkVar(xhr.getResponseHeader('redirectTo')) && xhr.getResponseHeader('redirectTo') != "") {
+			window.location = xhr.getResponseHeader('redirectTo');
+			return false;
+		}
+		
 		if(xhr.status != 200) {
 			//Error
 			alert("Error");
