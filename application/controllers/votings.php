@@ -19,9 +19,11 @@ class Votings extends CI_Controller {
 		$this->load->view("votings/new");
 	}
 	
-	public function ajax_create() {
+	public function ajax_save() {
 		$data = $this->input->post("data");
-		echo $this->votings_mdl->create($data, "json");
+		$data['building']['id'] = 1;
+		$data['user']['id'] = 1;
+		echo $this->votings_mdl->save($data, "json");
 	}
 	
 	public function ajax_load_answer() {

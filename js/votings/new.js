@@ -8,12 +8,15 @@ $(function() {
 		click: function() {
 			dialogWait(create_voting_dialog);
 			var data = getVoting(create_voting_dialog);
+			console.log("data");
+			console.log(data);
 			$.ajax({
-				url: "/votings/ajax_create",
+				url: "/votings/ajax_save",
 				type: "POST",
 				data: {data: data},
 				success: function(resp_arg) {
-					console.log(data);
+					console.log("resp_arg");
+					console.log(resp_arg);
 					notify(lang.voting_created_successfully, "success");
 					setTimeout(function() {
 						//window.location.reload();
@@ -104,15 +107,19 @@ $(function() {
 		var data = {};
 		data.title = $.trim(container.find(".jq-title").val());
 		data.description = $.trim(container.find(".jq-description").val());
-		data.multiple = (container.find(".jq-multiple").is(":checked"))?1:0;
 		data.options = [];
 		container.find(".jq-option").each(function() {
 			if($.trim($(this).val()) == "")
 				return true;
 			
-			var option = $.trim($(this).val());
+			var option = {text: $.trim($(this).val())};
 			data.options.push(option);
 		});
+		
+		if(container.find(".jq-multiple").is(":checked"))
+			data.possibleAnswers = data.options.length;
+		else
+			data.possibleAnswers = 1;
 		
 		return data;
 	}

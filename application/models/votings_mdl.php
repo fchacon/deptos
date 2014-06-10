@@ -1,18 +1,17 @@
 <?php
 class Votings_mdl extends CI_Model {
-	var $ws_class = "voting";
+	var $ws_class = "votings";
 	
 	function __construct() {
 		parent::__construct();
 	}
 	
 	function getByBuilding($format = "array") {
-		//return array(array("id" => 1, "title" => "Votacion 1", "description" => "Descripción votacion 1"), array("id" => 2, "title" => "Votacion 2", "description" => "Descripción votacion 2"));
-		return json_decode($this->ws->get($this->ws_class."/getByBuilding"), true);
+		return $this->ws->get($this->ws_class."/getByBuilding", $format);
 	}
 	
-	function create($data, $format = "array") {
-		return array("data" => 1);
+	function save($data, $format = "array") {
+		return $this->ws->post($this->ws_class."/save", $format, $data);
 	}
 	
 	function getById($id, $format = "array") {

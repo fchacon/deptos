@@ -10,7 +10,7 @@ class Ws {
     }
 	
 	/*HTTP DELETE*/
-	function delete($url, $data = array()){
+	function delete($url, $response_format, $data = array()){
 		$full_url = $this->WS.$url;
 		$curl_execution = $this->execute_curl('DELETE', $full_url, json_encode($data));
 		
@@ -22,11 +22,15 @@ class Ws {
 		
 		log_message('debug',"El resultado fue: ".print_r($result,true));
 	
-		return $result;
+		if($response_format == "array")
+			return json_decode($result, true);
+		
+		if($response_format == "json")
+			return $result;
 	}
 
 	/*HTTP POST*/
-	function post($url, $data = array(), $page_number = -1){
+	function post($url, $response_format, $data = array(), $page_number = -1){
 		$req_page_str = "";
 		if($page_number != -1)
 			$req_page_str = "?requestedpage=".$page_number;
@@ -40,12 +44,15 @@ class Ws {
 		}
 
 		log_message('debug',"El resultado fue: ".print_r($result,true));
+		if($response_format == "array")
+			return json_decode($result, true);
 		
-		return $result;
+		if($response_format == "json")
+			return $result;
 	}
 	
 	/*HTTP POST FILE*/
-	function post_file($url, $data = array()) {
+	function post_file($url, $response_format, $data = array()) {
 		$full_url = $this->WS.$url;
 
 		if(isset($data['attachedfile']))
@@ -63,11 +70,15 @@ class Ws {
 	    log_message('debug', 'UPLOAD RESPONSE: '.print_r($result, true));
 	    log_message('debug', 'UPLOAD DATA: '.print_r($data, true));
 		
-		return $result;
+		if($response_format == "array")
+			return json_decode($result, true);
+		
+		if($response_format == "json")
+			return $result;
 	}
 
 	/*HTTP GET*/
-	function get($url, $page_number = -1, $per_page = -1){
+	function get($url, $response_format, $page_number = -1, $per_page = -1){
 		$full_url = $this->WS.$url;
 		if( $page_number > 0 ){
 			if( stripos($full_url,'?' ) !== false  )
@@ -86,7 +97,11 @@ class Ws {
 			return;
 		}
 		
-		return $result;
+		if($response_format == "array")
+			return json_decode($result, true);
+		
+		if($response_format == "json")
+			return $result;
 	}
 	
 	function regular_get($url) {
