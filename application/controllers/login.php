@@ -10,11 +10,11 @@ class Login extends CI_Controller {
 		$data = $this->input->post('data');
 		$this->load->model('users_mdl');
 		$result = $this->users_mdl->validate($data['email'], sha1($data['password']));
-		if($result) {
+		if($result['data']) {
 			$this->session->set_userdata('logged', true);
 		}
 		
-		echo json_encode(array('data' => $result?1:0));
+		echo json_encode(array('data' => $result['data'] ));
 	}
 	
 	function logout() {

@@ -26,7 +26,7 @@ $(function() {
 			data: {data: data},
 			success: function(resp_arg) {
 				var resp = $.parseJSON(resp_arg);
-				if(resp.data == "1")
+				if( resp.data != "false" )
 					window.location = "/home";
 				else {
 					login.find(".jq-error").removeClass("hidden-obj");
