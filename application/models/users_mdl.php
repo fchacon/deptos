@@ -1,21 +1,15 @@
 <?php
 class Users_mdl extends CI_Model {
 
-    var $ws_class = "user";
+    var $ws_class = "users";
 
 	function __construct() {
 		parent::__construct();
-		$this->load->library('ws');
 	}
 	
 	function validate($email, $password, $format = 'array') {
-		//return true;
 	    $data = array ( 'email' => $email , 'password' => $password  );
-		$result = $this->ws->post($this->ws_class."/logIn",$data);
-		if($format == 'array'){
-			return json_decode($result, true);
-		}else
-			return $result;
+		return $this->ws->post($this->ws_class."/logIn", $format, $data);
 	}
 	
 	function forgottenPassword($email, $format = 'array') {

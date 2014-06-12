@@ -31,6 +31,7 @@ class Ws {
 
 	/*HTTP POST*/
 	function post($url, $response_format, $data = array(), $page_number = -1){
+		log_message("debug", "hare un post a: ".$url.", format: ".$response_format.", data: ".json_encode($data));
 		$req_page_str = "";
 		if($page_number != -1)
 			$req_page_str = "?requestedpage=".$page_number;
@@ -184,7 +185,7 @@ class Ws {
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		}
 		
-		curl_setopt($ch, CURLOPT_PROXY, null);
+		//curl_setopt($ch, CURLOPT_PROXY, null);
 		
 		$return['result'] = curl_exec($ch);
 		$return['http_status'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
