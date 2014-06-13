@@ -3,28 +3,6 @@
 class Login extends CI_Controller {
 
 	public function index() {
-		//$ch = curl_init("http://localhost:8080/deptobook/rest/users/logIn");
-		$ch = curl_init("http://www.php.net");
-		echo $ch."<br/>";
-		$data_string = json_encode(array("email" => "felipe.chacon@gmail.com", "password" => "pass"));
-		echo "1<br/>";
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-		echo "2<br/>";
-		//curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-		echo "3<br/>";
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
-		echo "4<br/>";
-		//curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-		//'Content-Type: application/json',
-		//'Content-Length: ' . strlen($data_string)
-		//));
-		echo "5<br/>";
-		
-		$return = curl_exec($ch);
-		echo "6<br/>";return;
-		echo print_r($return, true);
-		echo "7<br/>"; return;
 		$this->load->view('login');
 	}
 	
@@ -34,16 +12,16 @@ class Login extends CI_Controller {
 		
 		$result = $this->users_mdl->validate($data['email'], sha1($data['password']));
 
-		if( isset($result['data']) && is_array ($result['data'] ) ) {
+		if(isset($result['data']) && is_array($result['data'])) {
 			$this->session->set_userdata('logged', true);
 			//TODO definir que va dentro de esta variable 	
-			$this->session->set_userdata('userId', $result['data']['id'] );
+			$this->session->set_userdata('userId', $result['data']['id']);
 			if( isset($result['data']['role']) && is_array ($result['data']['role'] ) ) { //TODO definir que va dentro de esta variable, el nombre? el id?
 				$this->session->set_userdata('role', $result['data']['role']['name'] ); 
 			}
 		}
 		
-// 		echo json_encode(array('data' => $result['data'] ));
+ 		echo json_encode($result);
 	}
 	
 	function logout() {

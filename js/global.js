@@ -117,7 +117,7 @@ function globalAjax() {
 				else {
 					if(checkVar(resp.error) && checkVar(resp.error.message)) {
 						//Error
-						alert("Error");
+						alert(resp.error.message);
 					}
 				}
 			}
@@ -125,6 +125,9 @@ function globalAjax() {
 				//Error
 				return false;
 			}
+		}
+		else {
+			alert("Error ajax");
 		}
 	});
 }

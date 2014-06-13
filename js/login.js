@@ -25,14 +25,23 @@ $(function() {
 			type: "POST",
 			data: {data: data},
 			success: function(resp_arg) {
-				var resp = $.parseJSON(resp_arg);
-				if( resp.data != "false" )
-					window.location = "/home";
-				else {
-					login.find(".jq-error").removeClass("hidden-obj");
-					login.find(".jq-password").val("");
+				try {
+					var resp = $.parseJSON(resp_arg);
+					
+					if(checkVar(resp.data) && resp.data != "false")
+						window.location = "/home";
+					else {
+						login.find(".jq-error").removeClass("hidden-obj");
+						login.find(".jq-password").val("");
+						button.removeClass("disabled").text(lang.login);
+					}
+				}
+				catch(error) {
 					button.removeClass("disabled").text(lang.login);
 				}
+			},
+			error: function() {
+				button.removeClass("disabled").text(lang.login);
 			}
 		});
 	}
