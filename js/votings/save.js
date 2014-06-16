@@ -8,22 +8,21 @@ $(function() {
 		click: function() {
 			dialogWait(create_voting_dialog);
 			var data = getVoting(create_voting_dialog);
-			console.log("data");
-			console.log(data);
 			$.ajax({
 				url: "/votings/ajax_save",
 				type: "POST",
 				data: {data: data},
 				success: function(resp_arg) {
-					console.log("resp_arg");
-					console.log(resp_arg);
+					create_voting_dialog.dialog("close");
 					notify(lang.voting_created_successfully, "success");
 					setTimeout(function() {
-						//window.location.reload();
-					}, 2500);
+						window.location.reload();
+					}, 2000);
+				},
+				error: function() {
+					assignButtons(create_voting_dialog, buttons_for_new_voting);
 				}
 			});
-			create_voting_dialog.dialog("close");
 		}
 	}, {
 		text: lang.site_cancel,

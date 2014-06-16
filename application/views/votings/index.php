@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?php echo get_js('votings/new');?>"></script>
+<script type="text/javascript" src="<?php echo get_js('votings/save');?>"></script>
 <script type="text/javascript" src="<?php echo get_js('votings/vote');?>"></script>
 <div class="section-header">
 	<table class="full-width">
@@ -27,11 +27,13 @@
 	</tr>
 	<?php } ?>
 </table>
+<?php } else { ?>
+<div class="informative-text"><?php echo lang('voting_no_votings');?></div>
 <?php } ?>
 
 <div class="hidden-obj">
 	<?php //Dialog de crear votacion ?>
-	<div id="jq-create-voting-dialog" class="dialog-wrapper" title="Crear votación">
+	<div id="jq-create-voting-dialog" class="dialog-wrapper" title="<?php echo lang('voting_create');?>">
 		<div class="jq-content"></div>
 	</div>
 	

@@ -5,6 +5,26 @@ $(function() {
 		text: lang.site_send,
 		"className": "btn btn-sm btn-success",
 		click: function() {
+			dialogWait(vote_dialog);
+			var options = getOptionsSelected();
+			if(options.length == 0) {
+				var message = (vote_dialog.find(".jq-possible-answers").val() == "1")?lang.voting_select_an_option:lang.voting_select_at_least_one_option;
+				alert(lang.voting_must_select_an_option);
+				assignButtons(vote_dialog, buttons_for_answer_voting);
+				return false;
+			}
+			
+			$.ajax({
+				url: "/votings/ajax_save_answer",
+				type: "POST",
+				data: {options: options},
+				success: function(resp_arg) {
+					
+				},
+				error: function() {
+					
+				}
+			});
 			vote_dialog.dialog("close");
 		}
 	}, {
@@ -37,4 +57,15 @@ $(function() {
 		vote_dialog.data("id", $(this).parentsUntil("tr").parent("tr").data("id").toString());
 		vote_dialog.dialog("open");
 	});
+	
+	//Obtener opciones seleccionadas
+	function getOptionsSelected() {
+		var options = [];
+		vote_dialog.find(".jq-option:checked").each(function() {
+			var option = {id: $(this).val()};
+			options.push(option);
+		});
+		
+		return options;
+	}
 });

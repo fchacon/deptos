@@ -9,3 +9,6 @@ $lang['voting_answer'] = "Responder votación";
 $lang['voting_answer_it'] = "Responder";
 $lang['voting_votings'] = "Votaciones";
 $lang['voting_create'] = "Crear votacion";
+$lang['voting_no_votings'] = "No hay votaciones disponibles.";
+$lang['voting_select_an_option'] = "Debe seleccionar una opción";
+$lang['voting_select_at_least_one_option'] = "Debe seleccionar al menos una opción";

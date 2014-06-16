@@ -14,11 +14,7 @@ class Login extends CI_Controller {
 
 		if(isset($result['data']) && is_array($result['data'])) {
 			$this->session->set_userdata('logged', true);
-			//TODO definir que va dentro de esta variable 	
-			$this->session->set_userdata('userId', $result['data']['id']);
-			if( isset($result['data']['role']) && is_array ($result['data']['role'] ) ) { //TODO definir que va dentro de esta variable, el nombre? el id?
-				$this->session->set_userdata('role', $result['data']['role']['name'] ); 
-			}
+			$this->session->set_userdata('user', $result['data']);
 		}
 		
  		echo json_encode($result);

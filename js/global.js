@@ -73,7 +73,7 @@ function assignButtons(dialog, buttons) {
 function dialogWait(dialog) {
 	var button_wait = [{
 		text: lang.site_wait_a_moment,
-		"className": "btn btn-success",
+		"className": "btn btn-sm btn-success",
 		disabled: true
 	}];
 	assignButtons(dialog, button_wait);

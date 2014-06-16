@@ -6,8 +6,8 @@ class Votings_mdl extends CI_Model {
 		parent::__construct();
 	}
 	
-	function getByBuilding($format = "array") {
-		return $this->ws->get($this->ws_class."/getByBuilding", $format);
+	function getByBuilding($buildingId, $page, $format = "array") {
+		return $this->ws->get($this->ws_class."/getByBuilding?buildingId=".$buildingId."&page=".$page, $format);
 	}
 	
 	function save($data, $format = "array") {
@@ -15,9 +15,6 @@ class Votings_mdl extends CI_Model {
 	}
 	
 	function getById($id, $format = "array") {
-		return array("data" => array("title" => "Votacion 1", 
-									"description" => "Descripcion", 
-									"options" => array(array("id" => 1, "text" => "Opcion 1"), array("id" => 2, "text" => "Opcion 2")), 
-									"multiple" => 0));
+		return $this->ws->get($this->ws_class."/getById?votingId=".$id, $format);
 	}
 }

@@ -12,5 +12,7 @@ $config['LANGUAGES_ITEMS'] = array(
 	"site_data_saved_successfully",
 	"site_create",
 	"voting_created_successfully",
-	"site_send"
+	"site_send",
+	"voting_select_an_option",
+	"voting_select_at_least_one_option"
 );
