@@ -17,15 +17,16 @@ $(function() {
 			$.ajax({
 				url: "/votings/ajax_save_answer",
 				type: "POST",
-				data: {options: options},
+				data: {options: options, votingId: vote_dialog.data("id").toString()},
 				success: function(resp_arg) {
-					
+					vote_dialog.dialog("close");
+					notify(lang.voting_answer_saved_successfully, "success");
 				},
 				error: function() {
-					
+					assignButtons(vote_dialog, buttons_for_answer_voting);
 				}
 			});
-			vote_dialog.dialog("close");
+			
 		}
 	}, {
 		text: lang.site_cancel,

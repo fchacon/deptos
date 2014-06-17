@@ -17,4 +17,8 @@ class Votings_mdl extends CI_Model {
 	function getById($id, $format = "array") {
 		return $this->ws->get($this->ws_class."/getById?votingId=".$id, $format);
 	}
+	
+	function saveAnswer($data, $format = "array") {
+		return $this->ws->post($this->ws_class."/saveAnswer", $format, $data);
+	}
 }

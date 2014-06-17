@@ -12,3 +12,4 @@ $lang['voting_create'] = "Crear votacion";
 $lang['voting_no_votings'] = "No hay votaciones disponibles.";
 $lang['voting_select_an_option'] = "Debe seleccionar una opción";
 $lang['voting_select_at_least_one_option'] = "Debe seleccionar al menos una opción";
+$lang['voting_answer_saved_successfully'] = "Respuesta guardada exitosamente";
