@@ -11,7 +11,7 @@ class Votings extends CI_Controller {
 	public function index($page = 1) {
 		$data['VIEW'] = "votings/index";
 		$user = $this->session->userdata("user");
-		$data['VOTINGS'] = $this->votings_mdl->getByBuilding($user['building']['id'], $page);
+		$data['VOTINGS'] = $this->votings_mdl->getByBuilding($user['id'], $user['building']['id'], $page);
 		$data['VOTINGS'] = $data['VOTINGS']['data'];
 		$this->load->view('includes/template', $data);
 	}

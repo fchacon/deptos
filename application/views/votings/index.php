@@ -22,7 +22,14 @@
 			<p class=""><?php echo $voting['description'];?></p>
 		</td>
 		<td colspan="1" width="20%" class="text-right valign-middle">
+			<?php if(isset($voting['answered']) && $voting['answered'] == 1) { ?>
+			<span class="label label-info">
+				<span class="glyphicon glyphicon-ok"></span>
+				<?php echo lang('voting_already_answered');?>
+			</span>
+			<?php } else { ?>
 			<button class="btn btn-sm btn-default jq-vote"><?php echo lang('voting_answer_it');?></button>
+			<?php } ?>
 		</td>
 	</tr>
 	<?php } ?>
