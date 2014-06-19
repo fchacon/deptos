@@ -170,8 +170,8 @@ function uuid() {
 function setLabels(container) {
 	container.find("label").each(function() {
 		var field;
-		if($(this).prev().is(":checkbox") || $(this).prev().is(":radio"))
-			field = $(this).prev();
+		if($(this).children().first().is(":checkbox") || $(this).children().first().is(":radio"))
+			field = $(this).children().first();
 		else {
 			field = $(this).next(":text, textarea, select").first();
 			if(field.length == 0)

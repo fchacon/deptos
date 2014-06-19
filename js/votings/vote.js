@@ -20,6 +20,10 @@ $(function() {
 				data: {options: options, votingId: vote_dialog.data("id").toString()},
 				success: function(resp_arg) {
 					vote_dialog.dialog("close");
+					var tr = vote_dialog.data("tr");
+					var clon = $(".jq-answered-button:last").clone();
+					clon.insertAfter(tr.find(".jq-vote"));
+					tr.find(".jq-vote").remove();
 					notify(lang.voting_answer_saved_successfully, "success");
 				},
 				error: function() {
@@ -55,7 +59,9 @@ $(function() {
 	
 	//Click a Responder votacion
 	$(".jq-vote").off("click").on("click", function() {
-		vote_dialog.data("id", $(this).parentsUntil("tr").parent("tr").data("id").toString());
+		var tr = $(this).parentsUntil("tr").parent("tr");
+		vote_dialog.data("id", tr.data("id").toString());
+		vote_dialog.data("tr", tr);
 		vote_dialog.dialog("open");
 	});
 	

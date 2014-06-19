@@ -3,7 +3,8 @@ html, body {
 	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important;
 }
 body {
-	padding-top: 45px;
+	padding-top: 50px;
+	font-size: 12px !important;
 }
 .breadcrumb {
 	position: fixed !important;
@@ -140,12 +141,23 @@ h1,h2,h3 {
 }
 
 .checkbox-wrapper {
-	padding:2px;
+	padding: 5px;
+	display: block;
 }
 
-.checkbox-wrapper label {
-	position: relative;
-	top:-2px;
+.checkbox-wrapper input {
+	margin: 0px 3px 0px 0px !important;
+	position:relative;
+	top:2px;
+}
+
+.checkbox-wrapper:hover {
+	background-color: #E8E8E8;
+}
+
+.checkbox-wrapper:hover,
+.checkbox-wrapper input:hover {
+	cursor:pointer !important;
 }
 
 .voting:hover {

@@ -9,10 +9,10 @@
 	</div>
 	
 	<h5><?php echo lang('voting_options');?> <small><?php echo lang('voting_options_obs');?></small></h5>
-	<div class="checkbox-wrapper">
+	<label class="checkbox-wrapper">
 		<input type="checkbox" class="jq-multiple">
-		<label><?php echo lang('voting_allow_multiple_responses');?></label>
-	</div>
+		<span><?php echo lang('voting_allow_multiple_responses');?></span>
+	</label>
 	<div class="form-group jq-option-group">
 		<label for=""><?php echo lang('voting_option');?> <span class="jq-option-number">1</span></label>
 		<div class="input-group">

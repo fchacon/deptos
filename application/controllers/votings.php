@@ -12,7 +12,19 @@ class Votings extends CI_Controller {
 		$data['VIEW'] = "votings/index";
 		$user = $this->session->userdata("user");
 		$data['VOTINGS'] = $this->votings_mdl->getByBuilding($user['id'], $user['building']['id'], $page);
+		$totalRows = $data['VOTINGS']['totalRows'];
 		$data['VOTINGS'] = $data['VOTINGS']['data'];
+		
+		$this->load->library('pagination');
+		
+		$config['base_url'] = site_url('votings/index');
+		$config['total_rows'] = $totalRows;
+		$config['per_page'] = 1;
+		$config['uri_segment'] = 3;
+		$config['use_page_numbers'] = TRUE;
+		
+		$this->pagination->initialize($config);
+		
 		$this->load->view('includes/template', $data);
 	}
 	
