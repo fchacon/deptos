@@ -1,15 +1,40 @@
 $(function() {
 	var vote_dialog = $("#jq-vote-dialog");
 	
+	function getOptionsValidation() {
+		var possible_answers = vote_dialog.find(".jq-possible-answers").val();
+		var parts = possible_answers.split(":");
+		var minimum = parts[0];
+		var maximum = parts[1];
+		var message;
+		if(minimum == maximum) {
+			message = lang.validation_must_select+" "+minimum+" ";
+			message += (minimum == 1)?lang.validation_option:lang.validation_options;
+		}
+		else if(maximum < 0) {
+			message = lang.validation_must_select+" "+lang.validation_at_least+" "+minimum+" ";
+			message += (minimum == 1)?lang.validation_option:lang.validation_options;
+		}
+		else if(minimum == 0) {
+			message = lang.validation_must_select+" "+lang.validation_at_most+" "+maximum+" ";
+			message += (maximum == 1)?lang.validation_option:lang.validation_options;
+		}
+		else
+			message = lang.validation_must_select+" "+lang.validation_between+" "+minimum+" "+lang.site_and+" "+maximum+" "+lang.validation_options;
+		
+		return {minimum: minimum, maximum: maximum, message: message};
+	}
+	
 	buttons_for_answer_voting = [{
 		text: lang.site_send,
 		"className": "btn btn-sm btn-success",
 		click: function() {
 			dialogWait(vote_dialog);
 			var options = getOptionsSelected();
-			if(options.length == 0) {
-				var message = (vote_dialog.find(".jq-possible-answers").val() == "1")?lang.voting_select_an_option:lang.voting_select_at_least_one_option;
-				alert(lang.voting_must_select_an_option);
+			var validation = getOptionsValidation();
+			
+			if(options.length < validation.minimum || (options.length > validation.maximum && validation.maximum > 0)) {
+				alert(validation.message);
 				assignButtons(vote_dialog, buttons_for_answer_voting);
 				return false;
 			}
@@ -21,7 +46,7 @@ $(function() {
 				success: function(resp_arg) {
 					vote_dialog.dialog("close");
 					var tr = vote_dialog.data("tr");
-					var clon = $(".jq-answered-button:last").clone();
+					var clon = $(".jq-view-results:last").clone();
 					clon.insertAfter(tr.find(".jq-vote"));
 					tr.find(".jq-vote").remove();
 					notify(lang.voting_answer_saved_successfully, "success");
@@ -49,6 +74,8 @@ $(function() {
 			printLoading(vote_dialog.find(".jq-content"), "large");
 			vote_dialog.find(".jq-content").load("/votings/ajax_load_answer", {id: vote_dialog.data("id")}, function() {
 				setLabels(vote_dialog);
+				var validation = getOptionsValidation();
+				vote_dialog.find(".jq-note").text(validation.message);
 				removeLoading(vote_dialog.find(".jq-content"));
 			});
 		},

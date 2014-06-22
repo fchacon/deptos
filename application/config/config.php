@@ -357,8 +357,32 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+//Paginacion
+$config['PAGINATION_PER_PAGE'] = 20;
+$config['PAGINATION'] = array(	'full_tag_open' => "<div><ul class='pagination'>",
+		'full_tag_close' => "</ul></div>",
+		'first_link' => 'site_first',
+		'last_link' => 'site_last',
+		'next_link' => 'site_next',
+		'prev_link' => 'site_previous',
+		'cur_tag_open' => "<li class='active'><a href='#'>",
+		'cur_tag_close' => "</a></li>",
+		'num_tag_open' => '<li>',
+		'num_tag_close' => '</li>',
+		'first_tag_open' => '<li>',
+		'first_tag_close' => '</li>',
+		'last_tag_open' => '<li>',
+		'last_tag_close' => '</li>',
+		'next_tag_open' => '<li>',
+		'next_tag_close' => '</li>',
+		'prev_tag_open' => '<li>',
+		'prev_tag_close' => '</li>',
+		'use_page_numbers' => TRUE,
+		'num_links' => 4,
+		'per_page' => $config['PAGINATION_PER_PAGE']
+);
+
+//Url de los servicios
 $config['WS_URL'] = "http://localhost:8080/deptobook/rest/";
-
-
 /* End of file config.php */
 /* Location: ./application/config/config.php */

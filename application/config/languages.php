@@ -15,5 +15,16 @@ $config['LANGUAGES_ITEMS'] = array(
 	"site_send",
 	"voting_select_an_option",
 	"voting_select_at_least_one_option",
-	"voting_answer_saved_successfully"
+	"voting_answer_saved_successfully",
+	"validation_empty_answers",
+	"validation_answers_overflow",
+	"validation_answers_range",
+	"validation_natural_field",
+	"validation_must_select",
+	"validation_option",
+	"validation_options",
+	"validation_at_least",
+	"validation_at_most",
+	"validation_between",
+	"site_and"
 );

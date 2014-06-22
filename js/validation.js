@@ -29,6 +29,26 @@ function validateRut() {
 	return true;
 }
 
+function validateNatural(field) {
+	var response = true;
+	var n = $.trim(field.val());
+	if(n == "")
+		return true;
+	
+	n = n.toString();
+	var n1 = Math.abs(n),
+	n2 = parseInt(n, 10);
+	response = !isNaN(n1) && n2 === n1 && n1.toString() === n;
+	if(!response) {
+		field.addClass("field-error");
+		var span = $("<span></span>");
+		span.addClass("jq-form-error form-error").text(lang.validation_natural_field);
+		span.insertAfter(field);
+	}
+	
+	return response;
+}
+
 function validateForm(container) {
 	container.find(".jq-form-error").remove();
 	container.find(".field-error").removeClass("field-error");
@@ -43,6 +63,8 @@ function validateForm(container) {
 				response = validateRequired($(this)) && response;
 			else if(validations[i] == "email")
 				response = validateEmail($(this)) && response;
+			else if(validations[i] == "natural")
+				response = validateNatural($(this)) && response;
 		}
 	});
 	

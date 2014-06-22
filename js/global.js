@@ -207,11 +207,13 @@ function addRequiredField(container) {
 		var element = $(this);
 		$.each(validations, function(index, validation) {
 			if(validation == "required") {
-				var label = element.prev("label");
+				var label = element.prev();
+				if(label.length == 0 || !label.is("label"))
+					label = element.parent().prev();
+				
 				var html_required = $("<span></span>");
-				html_required.addClass("red-asterisk").text("*").data({toggle: "tooltip", placement: "top", title: "Campo obligatorio"});
+				html_required.addClass("red-asterisk").text("*").attr({title: lang.validation_required_field});
 				html_required.appendTo(label);
-				html_required.tooltip();
 				return false;
 			}
 		});

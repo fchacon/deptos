@@ -16,14 +16,11 @@ class Votings extends CI_Controller {
 		$data['VOTINGS'] = $data['VOTINGS']['data'];
 		
 		$this->load->library('pagination');
-		
-		$config['base_url'] = site_url('votings/index');
-		$config['total_rows'] = $totalRows;
-		$config['per_page'] = 1;
-		$config['uri_segment'] = 3;
-		$config['use_page_numbers'] = TRUE;
-		
-		$this->pagination->initialize($config);
+		$pagination_config = get_pagination_config();
+		$pagination_config['uri_segment'] = 3;
+		$pagination_config['base_url'] = site_url('votings/index');
+		$pagination_config['total_rows'] = $totalRows;
+		$this->pagination->initialize($pagination_config);
 		
 		$this->load->view('includes/template', $data);
 	}

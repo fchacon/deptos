@@ -14,10 +14,11 @@
 	</table>
 </div>
 <?php
-$btn_answered = "<button class='btn btn-sm btn-info jq-answered-button' disabled='disabled'>";
-$btn_answered .= "<span class='glyphicon glyphicon-ok'></span>&nbsp;";
-$btn_answered .= lang('voting_already_answered');
+$btn_answered = "<button class='btn btn-sm btn-info jq-view-results'>";
+$btn_answered .= "<span class='glyphicon glyphicon-stats'></span>&nbsp;";
+$btn_answered .= lang('voting_view_stats');
 $btn_answered .= "</button>";
+
 ?>
 <?php if(isset($VOTINGS) && !empty($VOTINGS)) { ?>
 <table class="table full-width">
